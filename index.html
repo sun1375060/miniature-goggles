@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.wrap{
+		width: 800px;
+		height: 600px;
+		margin: 0 auto;
+		margin-top: 20px;
+		background: paleturquoise;
+	}
+	.db{
+		width: 100px;
+		height: 200px;
+		border: 1px solid #666;
+		margin: 10px 0 0 0;
+		float: left;
+	}
+	
+		.db a{
+			width: 100px;
+			height: 30px;
+			display: block;
+			background: #3385FF;
+			margin-bottom: 20px;
+			text-align: center;
+			line-height: 30px;
+			color: #fff;
+			text-decoration: none;
+			font-size: 20px;
+		}
+		ul{
+			width: 800px;
+			height: 40px;
+			/*background: #3388FF;*/
+			float: left;
+			
+		}
+		ul li{
+			list-style: none;
+			float: left;
+			width: 150px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin-left: 30px;
+			color: #fff;
+			background:lime;
+		}
+		.XW{
+			width: 800px;
+			height: 300px;
+			float: left;
+			border: 1px solid red;
+			box-sizing: border-box;
+			color: #FF0000;
+			font-size: 50px;
+		}
+		.XW img{
+			width: 800px;
+			height: 300px;
+			float: left;
+		}
+		.content{
+			width: 670px;
+			height: 200px;
+			float: left;
+			border: 1px solid lightseagreen;
+			margin: 10px 0 0 10px;
+			
+		}
+	</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul>
+			<li>首页</li>
+			<li id="oli"><a href="indexB.html?id=A">新闻</a></li>
+			<li>关于我们</li>
+			</ul>
+							<div class="XW"><img src="img/lb4.jpg"/></div>		
+					
+					
+		<!--装的详情栏-->
+		<div class="db"></div>
+		
+		<div class="content"></div>
+		
+	</div>
+		<script type="text/javascript">
+			$(function(){
+
+				
+				$.ajax({
+					url:'http://localhost:3000/item/list',
+					type:'GET',
+					success:function(e){
+				for(var i=0;i<e.length;i++){
+$('.db').append("<a href='indexB.html?id="+e[i].id+"'>"+e[i].xinwen+"</a>")
+
+//$('.db').append("<a href='#'>"+e[i].nav+"</a>")
+//$('.db>a').click(function(){
+//	$(this).parent().siblings('.content').append('<b>'+e[i].nav+'</b>')
+//})
+
+						}
+//			console.log(e)
+					}
+				})
+				
+				
+				
+			})
+			
+		</script>
+	</body>
+</html>
